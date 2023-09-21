@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>LHS Fees</title>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+form {
+    display: inline-block;
+    text-align: center;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="submit"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+input[type="submit"] {
+    padding: 5px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    margin: 5px 0;
+}
+thead{ font-weight: bold; }
+th, td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #1c1818;
+    font-weight: normal;
+}
+th {
+    background-color: #f2f2f2;
+}
+h1, h2 {
+    text-align: center;
+}
+
+
+        </style>
+    </head>
+    <body>
+        <fieldset align="center"><legend><b><u>New Entry Details</u></b></legend>
+       <form method="POST" style="display:inline-block;">
+
+
+        <br>
+
+            <div align="center">
+                <div style="display:flex"><label for="Date">Date : &nbsp;   </label>
+                <input name="Date" value={{defdate}} id="Date"></div>&emsp;<br>
+
+                <div style="display:flex"><label for="Receipt">Receipt Number : &nbsp;   </label>
+                <input name="Receipt" id="Receipt"></div>&emsp;<br>
+
+                <div style="display:flex"><label for="Adm"> &emsp;Admission Number :&nbsp;</label>
+                <input name="Adm" id="Adm"></div>&emsp;<br>
+
+                <div style="display:flex"><label for="FeeType">Fee Type :&nbsp;</label>
+                <div><input type="radio" name="FeeType" id="Old Fees" value="Old Fees"> Old Fees</div>&emsp;
+                <div><input type="radio" name="FeeType" id="New Fees" value="New Fees"> New Fees</div>&emsp;</div><br>
+
+                <div style="display:flex"><label for="FeeAmt">Fee Amount : &nbsp;   </label>
+                <input name="FeeAmt" id="FeeAmt" /></div>&emsp;<br>
+                <div><input type="submit"></div>
+                <h4>{{message}}</h4>
+            </div>
+
+
+        </fieldset>
+        </form>
+        <br>
+        <br>
+        {% block content %}
+        <div align="center" >
+            <table>
+                <h1>
+                    <b>{{outtable | safe}}</b>
+                </h1>
+            </table>
+        </div>
+        {% endblock %}
+    </body>
+</html>
