@@ -1,0 +1,14 @@
+1. Fees File Search Name, Phone Number and Admission Number - GUI
+2. Fees File Search Name, Phone Number and Admission Number - Web
+3. Fees File Search Name, Phone Number and Admission Number - Hosting
+4. Fees File Search Name, Phone Number and Admission Number - Native App
+
+5. Marks File Search Admission Number FA1, FA2, FA3, FA4, SA1 and SA2
+
+6. Fees File Reports: Class wise list defaulters, students without agreements, students who have not paid anything, etc.,
+7. Marks File Reports: Class wise list, students who got A1 grade, students who failed in one particular subject or all subjects, etc.,
+
+8. Fees File Analytics: Trending Reports and Insights
+9. Marks File Analytics: Trending Reports and Insights
+
+10. Web Search with Radio buttons, check box, multiple links/buttons
