@@ -1,38 +1,37 @@
-import openpyxl
-from flask import Flask,request,render_template
 import datetime
-import pandas as pd
 import time
+
+import openpyxl
+import pandas as pd
 import xlwings as xw
+from flask import Flask, render_template, request
 
-
-defdate=datetime.datetime.today().strftime('%d-%m-%Y')
+defdate = datetime.datetime.today().strftime("%d-%m-%Y")
 global file
 file = "feescopy1.xlsx"
-cols=[1,2,3,7,13,11]
-out=pd.read_excel(
-    io=file,
-    sheet_name='Student Master',
-    converters={'Cell':str,'Adm':str},
-    usecols=cols)
-app=Flask(__name__)
-@app.route('/')
-def home():
-   return render_template("div.html",defdate=defdate)
+cols = [1, 2, 3, 7, 13, 11]
+out = pd.read_excel(io=file, sheet_name="Student Master", converters={"Cell": str, "Adm": str}, usecols=cols)
+app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+
+@app.route("/")
+def home():
+    return render_template("div.html", defdate=defdate)
+
+
+@app.route("/", methods=["POST"])
 def entry():
     global file
     global A
     wb = openpyxl.load_workbook(file)
-    sheet = wb['Daily Fees Entry']
+    sheet = wb["Daily Fees Entry"]
 
     for row in sheet.iter_rows(min_col=1, max_col=1):
-        if row[0].value == None:
-            A=str(row[0].row)
+        if row[0].value is None:
+            A = str(row[0].row)
             break
     else:
-        A=str(sheet.max_row+1)
+        A = str(sheet.max_row + 1)
 
     # B=request.form['Date']
     # C=int(request.form['Receipt'])
@@ -40,8 +39,8 @@ def entry():
     # E=str(request.form['FeeType'])
     # F=int(request.form['FeeAmt'])
 
-    G=request.values
-    response = G.getlist('Receipt')
+    G = request.values
+    response = G.getlist("Receipt")
     # sheet['A'+A]=int(A)+1
     # sheet['B'+A]=B
     # sheet['C'+A]=C
@@ -57,8 +56,9 @@ def entry():
     # wb.save(filename=file)
     # wb.close()
     print(G)
-    outtable=None
-    return render_template("div.html",defdate=defdate,outtable=outtable)
+    outtable = None
+    return render_template("div.html", defdate=defdate, outtable=outtable)
+
 
 # @app.route('/show', methods=['GET'])
 # def show():
@@ -76,5 +76,5 @@ def entry():
 #     print(start1-time.time())
 #     return render_template("show.html",showtable=showtable)
 
-if __name__=="__main__":
+if __name__ == "__main__":
     app.run()
